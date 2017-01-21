@@ -8,6 +8,8 @@ unsetopt autocd notify
 # The following lines were added by compinstall
 zstyle :compinstall filename '~/.zshrc'
 
+printf '\nfpath=($HOME/.homesick/repos/homeshick/completions $fpath)' >> $HOME/.zshrc
+
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
@@ -92,3 +94,5 @@ if [ $(df . | tail -n 1 | awk '{print $1}') = "AFS" ]
 then
   source .zshrc_andrew
 fi
+
+source "$HOME/.homesick/repos/homeshick/homeshick.sh"
