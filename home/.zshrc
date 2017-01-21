@@ -1,82 +1,94 @@
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt appendhistory beep extendedglob nomatch
+unsetopt autocd notify
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '~/.zshrc'
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME=""
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+### Above is auto-generated stuff ###
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+# Make sure we are running interactively, else stop
+[ -z "$PS1" ] && return
 
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+bindkey "^?" backward-delete-char
+bindkey "^[[3~" delete-char
+bindkey "^[[1~" beginning-of-line
+bindkey "^[[4~" end-of-line
+bindkey "^[[5~" up-line-or-history
+bindkey "^[[6~" down-line-or-history
+bindkey "^W" backward-kill-word
+bindkey "^H" backward-delete-char      # Control-h also deletes the previous char
+bindkey "^U" backward-kill-line
 
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+# Alias definitions.
+alias killz='killall -9 '
+alias hidden='ls -a | grep "^\..*"'
+alias rm='rm -I'
+alias shell='ps -p $$ -o comm='
+alias sml='rlwrap sml'
+alias math='rlwrap MathKernel'
+alias coin='rlwrap coin'
+alias valgrind-leak='valgrind --leak-check=full --show-reachable=yes'
+alias gcc122='gcc -Wall -Wextra -Werror -Wstrict-prototypes -Wshadow -std=c99 -pedantic'
+alias gcc122_d='gcc -Wall -Wextra -Werror -Wstrict-prototypes -Wshadow -std=c99 -pedantic -ggdb'
+alias clubticketcheck='klist | grep -q krbtgt/CLUB.CC.CMU.EDU@CLUB.CC.CMU.EDU'
+alias andrewticketcheck='klist | grep -q krbtgt/ANDREW.CMU.EDU@ANDREW.CMU.EDU'
+alias clubkl='clubticketcheck || kinit -l 24h $USER@CLUB.CC.CMU.EDU && aklog club.cc.cmu.edu'
+alias andrewkl='andrewticketcheck || kinit -l 24h $USER@ANDREW.CMU.EDU && aklog andrew.cmu.edu'
+alias symbolz='gcc -fno-asynchronous-unwind-tables -S -O0 -x c -o /dev/stdout'
+alias mkpassword='grep -v "'\''" /usr/share/dict/cracklib-small | grep -v "^[A-Z]" | egrep -x ".{1,8}" | shuf -n 4 | tr "\n" "-"; shuf -i 1-9 -n 1'
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+# Enable color support of ls and also add handy aliases
+# Mac OS and FreeBSD don't't support --color flag for ls and use -G instead.
+if [[ `uname` = "Darwin" || `uname` = "FreeBSD" ]]
+then
+  alias ls='ls -G -I '\''*.pyc'\'''
+else
+  alias ls='ls --color=auto -I '\''*.pyc'\'''
+fi
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+alias grep='grep --color=auto'
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+PROMPT="%F{yellow}%n@%m:%F{blue}%~ %F{red}⇒%f "
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+eval `dircolors ~/.dir_colors`
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+unset SSH_ASKPASS
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting)
+# Get coloring in man pages
+man() {
+  env LESS_TERMCAP_mb=$'\E[01;31m' \
+    LESS_TERMCAP_md=$'\E[01;38;5;74m' \
+    LESS_TERMCAP_me=$'\E[0m' \
+    LESS_TERMCAP_se=$'\E[0m' \
+    LESS_TERMCAP_so=$'\E[38;5;246m' \
+    LESS_TERMCAP_ue=$'\E[0m' \
+    LESS_TERMCAP_us=$'\E[04;38;5;146m' \
+    man "$@"
+}
 
-source $ZSH/oh-my-zsh.sh
+alias cdd='\cd'
+function cdandls () { cdd $1 && ls }
+alias cd='cdandls'
 
-# User configuration
+alias canon='cdd $(pwd -P)'
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+# Make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe.sh ] && export LESSOPEN="|/usr/bin/lesspipe.sh %s"
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+# Turn off the ability for other people to message your terminal using wall
+mesg n
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#
-source ~/.zshrc.pre-oh-my-zsh
-
-source "$HOME/.homesick/repos/homeshick/homeshick.sh"
-fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
+if [ $(df . | tail -n 1 | awk '{print $1}') = "AFS" ]
+then
+  source .zshrc_andrew
+fi
