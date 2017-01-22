@@ -5,16 +5,6 @@ SAVEHIST=1000
 setopt appendhistory beep extendedglob nomatch
 unsetopt autocd notify
 # End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '~/.zshrc'
-
-printf '\nfpath=($HOME/.homesick/repos/homeshick/completions $fpath)' >> $HOME/.zshrc
-
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
-
-### Above is auto-generated stuff ###
 
 # Make sure we are running interactively, else stop
 [ -z "$PS1" ] && return
@@ -96,3 +86,11 @@ then
 fi
 
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+
+fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
+
+# The following lines were added by compinstall
+zstyle :compinstall filename '~/.zshrc'
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
