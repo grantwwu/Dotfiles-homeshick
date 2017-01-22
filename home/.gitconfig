@@ -1,0 +1,11 @@
+[user]
+	name = Grant Wu
+	email = grantwwu@gmail.com
+[merge]
+	tool = meld
+	ff = only
+[core]
+	editor = vim
+[diff]
+[push]
+	default = simple
