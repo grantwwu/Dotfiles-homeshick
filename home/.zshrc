@@ -76,6 +76,8 @@ alias canon='cdd $(pwd -P)'
 
 # Make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe.sh ] && export LESSOPEN="|/usr/bin/lesspipe.sh %s"
+# Hide output after git log and git less
+export LESS=-R
 
 # Turn off the ability for other people to message your terminal using wall
 mesg n
@@ -88,6 +90,9 @@ fi
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 
 fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
+
+source "${HOME}/.zgen/zgen.zsh"
+zgen load zsh-users/zsh-syntax-highlighting
 
 # The following lines were added by compinstall
 zstyle :compinstall filename '~/.zshrc'
