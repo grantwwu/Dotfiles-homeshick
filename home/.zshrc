@@ -38,6 +38,8 @@ alias clubkl='clubticketcheck || kinit -l 24h $USER@CLUB.CC.CMU.EDU && aklog clu
 alias andrewkl='andrewticketcheck || kinit -l 24h $USER@ANDREW.CMU.EDU && aklog andrew.cmu.edu'
 alias symbolz='gcc -fno-asynchronous-unwind-tables -S -O0 -x c -o /dev/stdout'
 alias mkpassword='grep -v "'\''" /usr/share/dict/cracklib-small | grep -v "^[A-Z]" | egrep -x ".{1,8}" | shuf -n 4 | tr "\n" "-"; shuf -i 1-9 -n 1'
+alias ixio='curl -F '\''f:1=<-'\'' ix.io '
+alias screenfix='gsettings set org.gnome.desktop.interface scaling-factor'
 
 # Enable color support of ls and also add handy aliases
 # Mac OS and FreeBSD don't't support --color flag for ls and use -G instead.
