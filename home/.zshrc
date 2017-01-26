@@ -40,6 +40,7 @@ alias symbolz='gcc -fno-asynchronous-unwind-tables -S -O0 -x c -o /dev/stdout'
 alias mkpassword='grep -v "'\''" /usr/share/dict/cracklib-small | grep -v "^[A-Z]" | egrep -x ".{1,8}" | shuf -n 4 | tr "\n" "-"; shuf -i 1-9 -n 1'
 alias ixio='curl -F '\''f:1=<-'\'' ix.io '
 alias screenfix='gsettings set org.gnome.desktop.interface scaling-factor'
+alias audiofix='amixer -c 0 cset '\''numid=10'\'' 1 numid=10,iface=MIXER,name='\''Headphone Mic Boost Volume'\'
 
 # Enable color support of ls and also add handy aliases
 # Mac OS and FreeBSD don't't support --color flag for ls and use -G instead.
@@ -84,9 +85,9 @@ export LESS=-R
 # Turn off the ability for other people to message your terminal using wall
 mesg n
 
-if [ $(df . | tail -n 1 | awk '{print $1}') = "AFS" ]
+if [ $(df $HOME | tail -n 1 | awk '{print $1}') = "AFS" ]
 then
-  source .zshrc_andrew
+  source $HOME/.zshrc_andrew
 fi
 
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
