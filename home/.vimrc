@@ -34,7 +34,9 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-
+let g:syntastic_mode_map = {
+    \ "mode": "active",
+    \ "passive_filetypes": ["tex"] }
 
 " Show multicharacter commands as they are being typed
 set showcmd
@@ -82,7 +84,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 " SML signature files
 au BufRead,BufNewFile *.sig setlocal filetype=sml
 
-" SML signature files
+" C1 signature files
 au BufRead,BufNewFile *.c1 setlocal filetype=c0
 
 " Syntax highlighting and stuff

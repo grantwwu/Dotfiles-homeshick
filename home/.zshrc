@@ -13,8 +13,8 @@ setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE
 
 bindkey "^?" backward-delete-char
 bindkey "^[[3~" delete-char
-bindkey "^[[1~" beginning-of-line
-bindkey "^[[4~" end-of-line
+bindkey "$terminfo[home]" beginning-of-line
+bindkey "^[[F" end-of-line
 bindkey "^[[5~" up-line-or-history
 bindkey "^[[6~" down-line-or-history
 bindkey "^W" backward-kill-word
@@ -37,10 +37,10 @@ alias andrewticketcheck='klist | grep -q krbtgt/ANDREW.CMU.EDU@ANDREW.CMU.EDU'
 alias clubkl='clubticketcheck || kinit -l 24h $USER@CLUB.CC.CMU.EDU && aklog club.cc.cmu.edu'
 alias andrewkl='andrewticketcheck || kinit -l 24h $USER@ANDREW.CMU.EDU && aklog andrew.cmu.edu'
 alias symbolz='gcc -fno-asynchronous-unwind-tables -S -O0 -x c -o /dev/stdout'
-alias mkpassword='grep -v "'\''" /usr/share/dict/cracklib-small | grep -v "^[A-Z]" | egrep -x ".{1,8}" | shuf -n 4 | tr "\n" "-"; shuf -i 1-9 -n 1'
+alias mkpassword='grep -v "'\''" /usr/share/dict/words | grep -v "^[A-Z]" | egrep -x ".{1,8}" | shuf -n 4 | tr "\n" "-"; shuf -i 1-9 -n 1'
 alias ixio='curl -F '\''f:1=<-'\'' ix.io '
 alias screenfix='gsettings set org.gnome.desktop.interface scaling-factor'
-alias audiofix='amixer -c 0 cset '\''numid=10'\'' 1 numid=10,iface=MIXER,name='\''Headphone Mic Boost Volume'\'
+alias audiofix='amixer -c 0 cset '\''numid=10'\'' 1 numid=10,iface=MIXER,name='\''Headphone Mic Boost Volume'\'' > /dev/null'
 
 # Enable color support of ls and also add handy aliases
 # Mac OS and FreeBSD don't't support --color flag for ls and use -G instead.
