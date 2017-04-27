@@ -87,6 +87,9 @@ au BufRead,BufNewFile *.sig setlocal filetype=sml
 " C1 signature files
 au BufRead,BufNewFile *.c1 setlocal filetype=c0
 
+" Processing files
+au BufRead,BufNewFile *.pde setlocal filetype=java
+
 " Syntax highlighting and stuff
 syntax enable
 
