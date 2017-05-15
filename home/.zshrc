@@ -1,7 +1,7 @@
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=100000
+SAVEHIST=100000
 setopt appendhistory beep extendedglob nomatch
 unsetopt autocd notify
 # End of lines configured by zsh-newuser-install
@@ -45,10 +45,10 @@ alias inclip='xclip -sel clipboard'
 alias outclip='xclip -sel clipboard -out'
 
 # Enable color support of ls and also add handy aliases
-# Mac OS and FreeBSD don't't support --color flag for ls and use -G instead.
+# Mac OS and FreeBSD don't support --color flag for ls and use -G instead.
 if [[ `uname` = "Darwin" || `uname` = "FreeBSD" ]]
 then
-  alias ls='ls -G -I '\''*.pyc'\'''
+  alias ls='ls -G'
 else
   alias ls='ls --color=auto -I '\''*.pyc'\'''
 fi
