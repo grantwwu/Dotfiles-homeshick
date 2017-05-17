@@ -24,7 +24,6 @@ bindkey "^U" backward-kill-line
 # Alias definitions.
 alias killz='killall -9 '
 alias hidden='ls -a | grep "^\..*"'
-alias rm='rm -I'
 alias shell='ps -p $$ -o comm='
 alias sml='rlwrap sml'
 alias math='rlwrap MathKernel'
@@ -37,27 +36,31 @@ alias andrewticketcheck='klist | grep -q krbtgt/ANDREW.CMU.EDU@ANDREW.CMU.EDU'
 alias clubkl='clubticketcheck || kinit -l 24h $USER@CLUB.CC.CMU.EDU && aklog club.cc.cmu.edu'
 alias andrewkl='andrewticketcheck || kinit -l 24h $USER@ANDREW.CMU.EDU && aklog andrew.cmu.edu'
 alias symbolz='gcc -fno-asynchronous-unwind-tables -S -O0 -x c -o /dev/stdout'
-alias mkpassword='echo $(grep -v -E "^[A-Z]|'\''|.{9,}" /usr/share/dict/words | shuf -n 4 | tr "\n" "-")$(shuf -i 1-9 -n 1)'
 alias ixio='curl -F '\''f:1=<-'\'' ix.io '
-alias screenfix='gsettings set org.gnome.desktop.interface scaling-factor'
-alias audiofix='amixer -c 0 cset '\''numid=10'\'' 1 numid=10,iface=MIXER,name='\''Headphone Mic Boost Volume'\'' > /dev/null'
-alias inclip='xclip -sel clipboard'
-alias outclip='xclip -sel clipboard -out'
 
 # Enable color support of ls and also add handy aliases
 # Mac OS and FreeBSD don't support --color flag for ls and use -G instead.
 if [[ `uname` = "Darwin" || `uname` = "FreeBSD" ]]
 then
-  alias ls='ls -G'
+  # alias ls='ls -G'
+  alias ls='gls --color=auto -I '\''*.pyc'\'''
+  eval `gdircolors ~/.dir_colors`
+  alias rm='grm -I'
+  alias mkpassword='echo $(grep -v -E "^[A-Z]|'\''|.{9,}" /usr/share/dict/words | gshuf -n 4 | tr "\n" "-")$(gshuf -i 1-9 -n 1)'
 else
   alias ls='ls --color=auto -I '\''*.pyc'\'''
+  eval `dircolors ~/.dir_colors`
+  alias rm='rm -I'
+  alias mkpassword='echo $(grep -v -E "^[A-Z]|'\''|.{9,}" /usr/share/dict/words | shuf -n 4 | tr "\n" "-")$(shuf -i 1-9 -n 1)'
+  alias inclip='xclip -sel clipboard'
+  alias outclip='xclip -sel clipboard -out'
+  alias screenfix='gsettings set org.gnome.desktop.interface scaling-factor'
+  alias audiofix='amixer -c 0 cset '\''numid=10'\'' 1 numid=10,iface=MIXER,name='\''Headphone Mic Boost Volume'\'' > /dev/null'
 fi
 
 alias grep='grep --color=auto'
 
 PROMPT="%F{yellow}%n@%m:%F{blue}%~ %F{red}⇒%f "
-
-eval `dircolors ~/.dir_colors`
 
 unset SSH_ASKPASS
 
