@@ -75,7 +75,9 @@ set incsearch  "Start searching immediately
 set scrolloff=5  "Never scroll off
 set wildmode=longest,list  "Better unix-like tab completion
 "set cursorline  "Highlight current line
-set clipboard^=unnamedplus  "Copy and paste from system clipboard
+"set clipboard^=unnamedplus  "Copy and paste from system clipboard
+"set clipboard=unnamed  "Copy and paste from system clipboard
+set clipboard^=unnamed,unnamedplus
 set lazyredraw  "Don't redraw while running macros (faster)
 set autochdir  "Change directory to currently open file
 set nocompatible  "Kill vi-compatibility
