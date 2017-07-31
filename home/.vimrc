@@ -75,6 +75,7 @@ set linebreak  "Intelligently wrap long files
 set ttyfast  "Speed up vim
 set nostartofline "Vertical movement preserves horizontal position
 set background=dark
+set cc=80
 colorscheme solarized
 
 
