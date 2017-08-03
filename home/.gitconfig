@@ -8,4 +8,4 @@
 	editor = vim
 [diff]
 [push]
-	default = simple
+	default = current
