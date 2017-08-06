@@ -80,6 +80,13 @@ alias cdd='\cd'
 function cdandls () { cdd $1 && ls }
 alias cd='cdandls'
 
+alias overwrite='\mv'
+alias mv='\mv -i'
+
+alias cpp='\cp'
+alias cp='cpp -ri'
+
+
 alias canon='cdd $(pwd -P)'
 
 # Make less more friendly for non-text input files, see lesspipe(1)
