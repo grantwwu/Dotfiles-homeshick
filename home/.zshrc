@@ -54,7 +54,8 @@ else
   alias mkpassword='echo $(grep -v -E "^[A-Z]|'\''|.{9,}" /usr/share/dict/words | shuf -n 4 | tr "\n" "-")$(shuf -i 1-9 -n 1)'
   alias inclip='xclip -sel clipboard'
   alias outclip='xclip -sel clipboard -out'
-  alias screenfix='gsettings set org.gnome.desktop.interface scaling-factor'
+  alias screenunscale='gsettings set org.gnome.desktop.interface scaling-factor 1 && gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "[{'\''Gdk/WindowScalingFactor'\'', <1>}]" && gnome-session-quit --no-prompt'
+  alias screenscale='gsettings set org.gnome.desktop.interface scaling-factor 2 && gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "[{'\''Gdk/WindowScalingFactor'\'', <2>}]" && gnome-session-quit --no-prompt'
   alias audiofix='amixer -c 0 cset '\''numid=10'\'' 1 numid=10,iface=MIXER,name='\''Headphone Mic Boost Volume'\'' > /dev/null'
 fi
 
