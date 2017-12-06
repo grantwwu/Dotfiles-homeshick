@@ -57,6 +57,7 @@ else
   alias screenunscale='gsettings set org.gnome.desktop.interface scaling-factor 1 && gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "[{'\''Gdk/WindowScalingFactor'\'', <1>}]" && gnome-session-quit --no-prompt'
   alias screenscale='gsettings set org.gnome.desktop.interface scaling-factor 2 && gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "[{'\''Gdk/WindowScalingFactor'\'', <2>}]" && gnome-session-quit --no-prompt'
   alias audiofix='amixer -c 0 cset '\''numid=10'\'' 1 numid=10,iface=MIXER,name='\''Headphone Mic Boost Volume'\'' > /dev/null'
+  alias audiofix2='amixer -c 2 cset '\''numid=10'\'' 1 numid=10,iface=MIXER,name='\''Headphone Mic Boost Volume'\'' > /dev/null'
 fi
 
 alias grep='grep --color=auto'
