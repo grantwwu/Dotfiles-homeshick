@@ -36,7 +36,6 @@ alias andrewticketcheck='klist | grep -q krbtgt/ANDREW.CMU.EDU@ANDREW.CMU.EDU'
 alias clubkl='clubticketcheck || kinit -l 24h $USER@CLUB.CC.CMU.EDU && aklog club.cc.cmu.edu'
 alias andrewkl='andrewticketcheck || kinit -l 24h $USER@ANDREW.CMU.EDU && aklog andrew.cmu.edu'
 alias symbolz='gcc -fno-asynchronous-unwind-tables -S -O0 -x c -o /dev/stdout'
-alias sprunge='curl -F '\''sprunge=<-'\'' http://sprunge.us '
 
 # Enable color support of ls and also add handy aliases
 # Mac OS and FreeBSD don't support --color flag for ls and use -G instead.
