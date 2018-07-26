@@ -6,6 +6,7 @@
 	ff = only
 [core]
 	editor = vim
+	excludesfile = /Users/grant.wu/.gitignore_global
 [diff]
 [push]
 	default = current
