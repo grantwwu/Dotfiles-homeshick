@@ -42,12 +42,12 @@ alias symbolz='gcc -fno-asynchronous-unwind-tables -S -O0 -x c -o /dev/stdout'
 if [[ `uname` = "Darwin" || `uname` = "FreeBSD" ]]
 then
   # alias ls='ls -G'
-  alias ls='gls --color=auto -I '\''*.pyc'\'''
+  alias ls='gls --color=auto --hide='\''*.pyc'\'''
   eval `gdircolors ~/.dir_colors`
   alias rm='grm -I'
   alias mkpassword='echo $(grep -v -E "^[A-Z]|'\''|.{9,}" /usr/share/dict/words | gshuf -n 4 | tr "\n" "-")$(gshuf -i 1-9 -n 1)'
 else
-  alias ls='ls --color=auto -I '\''*.pyc'\'''
+  alias ls='ls --color=auto --hide='\''*.pyc'\'''
   eval `dircolors ~/.dir_colors`
   alias rm='rm -I'
   alias mkpassword='echo $(grep -v -E "^[A-Z]|'\''|.{9,}" /usr/share/dict/words | shuf -n 4 | tr "\n" "-")$(shuf -i 1-9 -n 1)'
