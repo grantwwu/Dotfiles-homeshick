@@ -13,11 +13,8 @@ Plugin 'gmarik/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-Plugin 'a.vim'
 Plugin 'syntastic'
-Plugin 'gregsexton/MatchTag'
-Bundle 'Glench/Vim-Jinja2-Syntax'
-Plugin 'rust-lang/rust.vim'
+Plugin 'fatih/vim-go'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
