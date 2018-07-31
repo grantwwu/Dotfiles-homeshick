@@ -1,5 +1,0 @@
-#Useful Functions
-#$1 is target and $2 and $3 are standard fs sa arguments
-afsperms(){ find $1 -type d -exec fs sa {} $2 $3 \; ; }
-qdict(){ grep $1 /usr/share/dict/words; }
-ldap(){ ldapsearch -b ou=person,dc=cmu,dc=edu cn=$1; }

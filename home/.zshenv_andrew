@@ -1,3 +1,0 @@
-export PATH="$PATH:/afs/andrew.cmu.edu/usr7/grantwu/bin:/afs/andrew/course/15/122/bin:/afs/andrew/course/15/150/bin:/afs/club.cc.cmu.edu/contrib/bin"
-export MANPATH="$MANPATH:/afs/club.cc.cmu.edu/contrib/man:usr/local/man"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/afs/club.cc.cmu.edu/contrib/lib"

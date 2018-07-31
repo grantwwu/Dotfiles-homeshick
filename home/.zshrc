@@ -31,10 +31,6 @@ alias coin='rlwrap coin'
 alias valgrind-leak='valgrind --leak-check=full --show-reachable=yes'
 alias gcc122='gcc -Wall -Wextra -Werror -Wstrict-prototypes -Wshadow -std=c99 -pedantic'
 alias gcc122_d='gcc -Wall -Wextra -Werror -Wstrict-prototypes -Wshadow -std=c99 -pedantic -ggdb'
-alias clubticketcheck='klist | grep -q krbtgt/CLUB.CC.CMU.EDU@CLUB.CC.CMU.EDU'
-alias andrewticketcheck='klist | grep -q krbtgt/ANDREW.CMU.EDU@ANDREW.CMU.EDU'
-alias clubkl='clubticketcheck || kinit -l 24h $USER@CLUB.CC.CMU.EDU && aklog club.cc.cmu.edu'
-alias andrewkl='andrewticketcheck || kinit -l 24h $USER@ANDREW.CMU.EDU && aklog andrew.cmu.edu'
 alias symbolz='gcc -fno-asynchronous-unwind-tables -S -O0 -x c -o /dev/stdout'
 
 # Enable color support of ls and also add handy aliases
@@ -97,11 +93,6 @@ export LESS=-R
 
 # Turn off the ability for other people to message your terminal using wall
 mesg n
-
-if [ $(df $HOME | tail -n 1 | awk '{print $1}') = "AFS" ]
-then
-  source $HOME/.zshrc_andrew
-fi
 
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 
