@@ -1,12 +1,13 @@
 [user]
-	name = Grant Wu
-	email = grantwwu@gmail.com
-[merge]
-	tool = meld
-	ff = only
+    name = Grant Wu
+    email = grantwwu@gmail.com
+[pull]
+    ff = only
 [core]
-	editor = vim
-	excludesfile = /Users/grant.wu/.gitignore_global
+    editor = vim
+    excludesfile = /Users/grant.wu/.gitignore_global
 [diff]
 [push]
 	default = current
+[remote]
+    pushDefault = origin

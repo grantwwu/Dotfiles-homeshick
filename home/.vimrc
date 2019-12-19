@@ -13,9 +13,7 @@ Plugin 'gmarik/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-Plugin 'chriskempson/base16-vim'
 Plugin 'syntastic'
-Plugin 'fatih/vim-go'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -87,7 +85,7 @@ set ttyfast  "Speed up vim
 set nostartofline "Vertical movement preserves horizontal position
 set background=dark
 set cc=80
-colorscheme base16-solarized-dark
+" colorscheme base16-solarized-dark
 
 
 " Strip whitespace from end of lines when writing file

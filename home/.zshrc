@@ -6,38 +6,16 @@ setopt appendhistory beep extendedglob nomatch
 unsetopt autocd notify
 # End of lines configured by zsh-newuser-install
 
-# Make sure we are running interactively, else stop
-[ -z "$PS1" ] && return
-
-setopt HIST_IGNORE_DUPS HIST_IGNORE_SPACE
-
-bindkey "^?" backward-delete-char
-bindkey "^[[3~" delete-char
-bindkey "$terminfo[home]" beginning-of-line
-bindkey "^[[F" end-of-line
-bindkey "^[[5~" up-line-or-history
-bindkey "^[[6~" down-line-or-history
-bindkey "^W" backward-kill-word
-bindkey "^H" backward-delete-char      # Control-h also deletes the previous char
-bindkey "^U" backward-kill-line
+setopt hist_ignore_dups hist_ignore_space
 
 # Alias definitions.
-alias killz='killall -9 '
-alias hidden='ls -a | grep "^\..*"'
-alias shell='ps -p $$ -o comm='
-alias sml='rlwrap sml'
-alias math='rlwrap MathKernel'
-alias coin='rlwrap coin'
 alias valgrind-leak='valgrind --leak-check=full --show-reachable=yes'
-alias gcc122='gcc -Wall -Wextra -Werror -Wstrict-prototypes -Wshadow -std=c99 -pedantic'
-alias gcc122_d='gcc -Wall -Wextra -Werror -Wstrict-prototypes -Wshadow -std=c99 -pedantic -ggdb'
 alias symbolz='gcc -fno-asynchronous-unwind-tables -S -O0 -x c -o /dev/stdout'
 
 # Enable color support of ls and also add handy aliases
 # Mac OS and FreeBSD don't support --color flag for ls and use -G instead.
 if [[ `uname` = "Darwin" || `uname` = "FreeBSD" ]]
 then
-  # alias ls='ls -G'
   alias ls='gls --color=auto --hide='\''*.pyc'\'''
   eval `gdircolors ~/.dir_colors`
   alias rm='grm -I'
@@ -47,8 +25,12 @@ else
   eval `dircolors ~/.dir_colors`
   alias rm='rm -I'
   alias mkpassword='echo $(grep -v -E "^[A-Z]|'\''|.{9,}" /usr/share/dict/words | shuf -n 4 | tr "\n" "-")$(shuf -i 1-9 -n 1)'
+
+  # Handy clipboard functions
   alias inclip='xclip -sel clipboard'
   alias outclip='xclip -sel clipboard -out'
+
+  # Specific settings for my Dell XPS 13 9350
   alias screenunscale='gsettings set org.gnome.desktop.interface scaling-factor 1 && gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "[{'\''Gdk/WindowScalingFactor'\'', <1>}]" && gnome-session-quit --no-prompt'
   alias screenscale='gsettings set org.gnome.desktop.interface scaling-factor 2 && gsettings set org.gnome.settings-daemon.plugins.xsettings overrides "[{'\''Gdk/WindowScalingFactor'\'', <2>}]" && gnome-session-quit --no-prompt'
   alias audiofix='amixer -c 0 cset '\''numid=10'\'' 1 numid=10,iface=MIXER,name='\''Headphone Mic Boost Volume'\'' > /dev/null'
@@ -58,8 +40,6 @@ fi
 alias grep='grep --color=auto'
 
 PROMPT="%F{yellow}%n@%m:%F{blue}%~ %F{red}⇒%f "
-
-unset SSH_ASKPASS
 
 # Get coloring in man pages
 man() {
@@ -90,9 +70,6 @@ alias canon='cdd $(pwd -P)'
 [ -x /usr/bin/lesspipe.sh ] && export LESSOPEN="|/usr/bin/lesspipe.sh %s"
 # Hide output after git log and git less
 export LESS=-R
-
-# Turn off the ability for other people to message your terminal using wall
-mesg n
 
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 
