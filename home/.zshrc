@@ -78,6 +78,8 @@ fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
 source "${HOME}/.zgen/zgen.zsh"
 zgen load zsh-users/zsh-syntax-highlighting
 
+fpath[1,0]=~/.zsh_completion/
+
 # The following lines were added by compinstall
 zstyle :compinstall filename '~/.zshrc'
 autoload -Uz compinit
