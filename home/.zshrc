@@ -8,6 +8,8 @@ unsetopt autocd notify
 
 setopt hist_ignore_dups hist_ignore_space
 
+bindkey -e
+
 # Alias definitions.
 alias valgrind-leak='valgrind --leak-check=full --show-reachable=yes'
 alias symbolz='gcc -fno-asynchronous-unwind-tables -S -O0 -x c -o /dev/stdout'
