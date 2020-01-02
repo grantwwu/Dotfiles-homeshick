@@ -68,6 +68,9 @@ alias cp='cpp -ri'
 
 alias canon='cdd $(pwd -P)'
 
+export EDITOR=vim
+export VISUAL=vim
+
 # Make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe.sh ] && export LESSOPEN="|/usr/bin/lesspipe.sh %s"
 # Hide output after git log and git less
