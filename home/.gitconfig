@@ -5,9 +5,13 @@
     ff = only
 [core]
     editor = vim
-    excludesfile = /Users/grant.wu/.gitignore_global
+    excludesfile = ~/.gitignore_global
 [diff]
 [push]
-	default = current
+    default = current
 [remote]
     pushDefault = origin
+[log]
+    date = iso-local
+[stash]
+    showPatch = true
