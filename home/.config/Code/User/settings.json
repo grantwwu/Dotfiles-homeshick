@@ -1,0 +1,9 @@
+{
+    "window.zoomLevel": 1,
+    "editor.minimap.enabled": false,
+    "vim.useSystemClipboard": true,
+    "workbench.editor.enablePreview": false,
+    "keyboard.dispatch": "keyCode",
+    // Use ctrl+shift+p -> 'Save without formatting' when you don't want this
+    "editor.formatOnSave": true,
+}
