@@ -10,6 +10,13 @@ setopt hist_ignore_dups hist_ignore_space
 
 bindkey -e
 
+# Make any macOS clients happy
+bindkey "^[[1~" beginning-of-line
+bindkey "^[[4~" end-of-line
+bindkey "^[[5~" up-line-or-history
+bindkey "^[[6~" down-line-or-history
+
+
 # Alias definitions.
 alias valgrind-leak='valgrind --leak-check=full --show-reachable=yes'
 alias symbolz='gcc -fno-asynchronous-unwind-tables -S -O0 -x c -o /dev/stdout'
@@ -17,12 +24,6 @@ alias symbolz='gcc -fno-asynchronous-unwind-tables -S -O0 -x c -o /dev/stdout'
 # Enable color support of ls and also add handy aliases
 if [[ `uname` = "Darwin" ]]
 then
-  # MacOS specific
-  bindkey "^[[1~" beginning-of-line
-  bindkey "^[[4~" end-of-line
-  bindkey "^[[5~" up-line-or-history
-  bindkey "^[[6~" down-line-or-history
-
   alias ls='gls --color=auto --hide='\''*.pyc'\'''
   eval `gdircolors ~/.dir_colors`
   alias rm='grm -I'
