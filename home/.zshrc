@@ -15,9 +15,14 @@ alias valgrind-leak='valgrind --leak-check=full --show-reachable=yes'
 alias symbolz='gcc -fno-asynchronous-unwind-tables -S -O0 -x c -o /dev/stdout'
 
 # Enable color support of ls and also add handy aliases
-# Mac OS and FreeBSD don't support --color flag for ls and use -G instead.
-if [[ `uname` = "Darwin" || `uname` = "FreeBSD" ]]
+if [[ `uname` = "Darwin" ]]
 then
+  # MacOS specific
+  bindkey "^[[1~" beginning-of-line
+  bindkey "^[[4~" end-of-line
+  bindkey "^[[5~" up-line-or-history
+  bindkey "^[[6~" down-line-or-history
+
   alias ls='gls --color=auto --hide='\''*.pyc'\'''
   eval `gdircolors ~/.dir_colors`
   alias rm='grm -I'
@@ -84,6 +89,8 @@ source "${HOME}/.zgen/zgen.zsh"
 zgen load zsh-users/zsh-syntax-highlighting
 
 fpath[1,0]=~/.zsh_completion/
+
+eval `keychain --agents ssh --eval keychain_key`
 
 # The following lines were added by compinstall
 zstyle :compinstall filename '~/.zshrc'
