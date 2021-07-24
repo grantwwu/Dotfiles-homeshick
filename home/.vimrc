@@ -40,6 +40,9 @@ if !has('nvim') && $TERM ==# 'screen-256color'
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
+set background=dark
+colorscheme solarized8
+
 filetype plugin indent on    " required
 
 let g:syntastic_mode_map = {

@@ -1,0 +1,6 @@
+[submodule "submodules/syntastic"]
+	path = submodules/syntastic
+	url = git@github.com:vim-syntastic/syntastic.git
+[submodule "submodules/vim-solarized8"]
+	path = submodules/vim-solarized8
+	url = https://github.com/lifepillar/vim-solarized8
