@@ -1,34 +1,46 @@
 set nocompatible              " be iMproved, required
-filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+set autochdir  "Change directory to currently open file
+set autoindent  "autoindent on new lines
+set background=dark
+set backspace=indent,eol,start  "Better backspacing
+set clipboard^=unnamed,unnamedplus
+set encoding=utf-8 "UTF-8 character encoding
+set equalalways  "Split windows equal size
+set expandtab  " Expand tabs into spaces
+set formatoptions=croq  "Enable comment line auto formatting
+set hlsearch  "Highlight on search
+set ignorecase  "Search ignoring case
+set incsearch  "Start searching immediately
+set lazyredraw  "Don't redraw while running macros (faster)
+set linebreak  "Only wrap on 'good' characters for wrapping
+set mouse=a
+set nostartofline "Vertical movement preserves horizontal position
+set number " Show line numbers
+set ruler  "Show bottom ruler
+set scrolloff=5  "Never scroll off
+set shiftwidth=2  "4 space shift
+set showcmd " Show multicharacter commands as they are being typed
+set showmatch  "Highlight matching braces
+set smartcase  "Search using smartcase
+set softtabstop=2  "Tab spaces in no hard tab mode
+set t_Co=256 "256 color
+set tabstop=2  "2 space tabs
+set title  "Set window title to file
+set ttyfast  "Speed up vim
+set wildignore+=*.o,*.obj,*.class,*.swp,*.pyc "Ignore junk files
+set wildmode=longest,list  "Better unix-like tab completion
+set wrap  "Visually wrap lines
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+set termguicolors
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'syntastic'
+" Correct RGB escape codes for vim inside tmux
+if !has('nvim') && $TERM ==# 'screen-256color'
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
 let g:syntastic_mode_map = {
     \ "mode": "active",
@@ -43,50 +55,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
-
-
-" Show multicharacter commands as they are being typed
-set showcmd
-
-set mouse=a
-
-set t_Co=256 "256 color
-set encoding=utf-8 "UTF-8 character encoding
-set tabstop=2  "4 space tabs
-set shiftwidth=2  "4 space shift
-set softtabstop=2  "Tab spaces in no hard tab mode
-set expandtab  " Expand tabs into spaces
-set autoindent  "autoindent on new lines
-set showmatch  "Highlight matching braces
-set ruler  "Show bottom ruler
-set number " Show line numbers
-set equalalways  "Split windows equal size
-set formatoptions=croq  "Enable comment line auto formatting
-set wildignore+=*.o,*.obj,*.class,*.swp,*.pyc "Ignore junk files
-set title  "Set window title to file
-set hlsearch  "Highlight on search
-set ignorecase  "Search ignoring case
-set smartcase  "Search using smartcase
-set incsearch  "Start searching immediately
-set scrolloff=5  "Never scroll off
-set wildmode=longest,list  "Better unix-like tab completion
-"set cursorline  "Highlight current line
-"set clipboard^=unnamedplus  "Copy and paste from system clipboard
-"set clipboard=unnamed  "Copy and paste from system clipboard
-set clipboard^=unnamed,unnamedplus
-set lazyredraw  "Don't redraw while running macros (faster)
-set autochdir  "Change directory to currently open file
-set nocompatible  "Kill vi-compatibility
-set wrap  "Visually wrap lines
-set linebreak  "Only wrap on 'good' characters for wrapping
-set backspace=indent,eol,start  "Better backspacing
-set linebreak  "Intelligently wrap long files
-set ttyfast  "Speed up vim
-set nostartofline "Vertical movement preserves horizontal position
-set background=dark
-set cc=80
-" colorscheme base16-solarized-dark
-
 
 " Strip whitespace from end of lines when writing file
 autocmd BufWritePre * :%s/\s\+$//e
