@@ -1,12 +1,10 @@
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=100000
+HISTFILE=~/.zsh_history
+HISTSIZE=999999999
 SAVEHIST=100000
-setopt appendhistory beep extendedglob nomatch interactivecomments
-unsetopt autocd notify
-# End of lines configured by zsh-newuser-install
+setopt beep nomatch interactivecomments
+unsetopt autocd
 
-setopt hist_ignore_dups hist_ignore_space
+setopt share_history hist_ignore_space
 
 bindkey -e
 
@@ -16,10 +14,10 @@ bindkey "^[[4~" end-of-line
 bindkey "^[[5~" up-line-or-history
 bindkey "^[[6~" down-line-or-history
 
-
+# Not currently used
 # Alias definitions.
-alias valgrind-leak='valgrind --leak-check=full --show-reachable=yes'
-alias symbolz='gcc -fno-asynchronous-unwind-tables -S -O0 -x c -o /dev/stdout'
+# alias valgrind-leak='valgrind --leak-check=full --show-reachable=yes'
+# alias symbolz='gcc -fno-asynchronous-unwind-tables -S -O0 -x c -o /dev/stdout'
 
 # Enable color support of ls and also add handy aliases
 if [[ `uname` = "Darwin" ]]
@@ -70,7 +68,7 @@ alias mv='\mv -i'
 
 alias cpp='\cp'
 alias cp='cpp -ri'
-
+function cdpar () { cdd $(dirname $1) && ls }
 
 alias canon='cdd $(pwd -P)'
 

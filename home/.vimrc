@@ -1,10 +1,13 @@
 set nocompatible              " be iMproved, required
 
-set autochdir  "Change directory to currently open file
+set clipboard^=unnamed,unnamedplus
+if !has('clipboard')
+  echo "Warning: missing clipboard support"
+endif
+
 set autoindent  "autoindent on new lines
 set background=dark
 set backspace=indent,eol,start  "Better backspacing
-set clipboard^=unnamed,unnamedplus
 set encoding=utf-8 "UTF-8 character encoding
 set equalalways  "Split windows equal size
 set expandtab  " Expand tabs into spaces
